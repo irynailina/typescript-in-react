@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import {NavLink} from 'react-router-dom'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -34,8 +35,12 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             React+TypeScript
           </Typography>
+          <NavLink to="/">
           <Button color="inherit">Todo list</Button>
+          </NavLink>
+          <NavLink to="/info">
           <Button color="inherit">Information</Button>
+          </NavLink>
         </Toolbar>
       </AppBar>
     </div>

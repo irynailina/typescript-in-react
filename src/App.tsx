@@ -1,32 +1,22 @@
-import React, {useState} from "react";
-import Container from '@material-ui/core/Container';
-import Navbar from './components/Navbar'
-import TodoForm from './components/TodoForm'
-import TodoList from "./components/TodoList";
-
+import React from "react";
+import {BrowserRouter, Switch, Route} from 'react-router-dom'
+import Container from "@material-ui/core/Container";
+import Navbar from "./components/Navbar";
+import TodosPage from "./pages/TodosPage";
+import InfoPage from "./pages/InfoPage";
 
 const App: React.FC = () => {
-  const [todos, setTodos] = useState([])
-  const addHandler = (title: string) => {
-    console.log('Add new todo', title)
-    const newTodo = {
-      title: title,
-      id: Date.now(),
-      completed: false
-    }
-    setTodos([newTodo, ...todos])
-  }
-
   return (
-    <>
-    <Navbar />
-    <Container maxWidth="md">
-      <h1>Test</h1>
-      <TodoForm onAdd={addHandler}/>
-      <TodoList todos={todos}/>
-    </Container>
-    </>
-  )
-}
+    <BrowserRouter>
+      <Navbar />
+      <Container maxWidth="md">
+        <Switch>
+          <Route component={TodosPage} path="/" exact/>
+          <Route component={InfoPage} path="/info"/>
+        </Switch>
+      </Container>
+    </BrowserRouter>
+  );
+}; 
 
 export default App;
